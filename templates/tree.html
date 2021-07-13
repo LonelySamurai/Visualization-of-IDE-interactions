@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usage of IDE Commands</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/png" href="static/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!-- Bootstrap core CSS     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!--  Light Bootstrap Table core CSS    -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/light-bootstrap-dashboard.css') }}">
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="static/css/pe-icon-7-stroke.css" rel="stylesheet"/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+          integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tree-chart.css') }}">
+    <script src="{{ url_for('static', filename='js/tree-chart.js') }}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #myImg {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #myImg:hover {
+            opacity: 0.7;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+        .modal-content, #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="static/img/sidebar-4.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    Visualization of IDE Interactions
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="/">
+                        <i class="icono-barChart"></i>
+                        <p>Home Page</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="tree">
+                        <i class="pe-7s-graph1"></i>
+                        <p>Usage of IDE Commands</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="rb">
+                        <i class="pe-7s-graph"></i>
+                        <p>Correlation between Refactoring and Test & Build Failures</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="spidy">
+                        <i class="icono-pieChart"></i>
+                        <p>Spider Web</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="map">
+                        <i class="pe-7s-world"></i>
+                        <p>World Map</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="network">
+                        <i class="pe-7s-network"></i>
+                        <p>Network Analysis</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cluster">
+                        <i class="fas fa-globe"></i>
+                        <p>3D Clustering</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="quiz">
+                        <i class="pe-7s-science"></i>
+                        <p>Quiz</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cluster">
+                        <i class="pe-7s-note2"></i>
+                        <p>Data set and Processing</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Command Usage Visualization</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="">
+                                <p>About</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <p>
+                                    Dropdown
+                                    <b class="caret"></b>
+                                </p>
+
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h3>{{ desc }}</h3>
+                            </div>
+                            <div class="content">
+                                <div id="chart">
+                                <script>
+
+                                    var myTree = tree().height(800).width(960);
+
+                                    d3.text("{{ url_for('static', filename='data/test_comm.csv') }}", function (error, text) {
+                                        if (error) throw error;
+                                        var table = [{
+                                            name: 'Triggered',
+                                            parent: null
+                                        }];
+                                        var methods = [];
+                                        var commands = [];
+                                        d3.csvParseRows(text, function (d, i) {
+                                            if (d[0].startsWith('trigger')) return;
+
+                                            if (!commands.find(function (element) {
+                                                return element === d[1];
+                                            })) {
+                                                table.push({
+                                                    name: d[1],
+                                                    parent: d[0]
+                                                });
+                                                commands.push(d[1]);
+                                            }
+
+                                            if (!methods.find(function (element) {
+                                                return element === d[0];
+                                            })) {
+                                                table.push({
+                                                    name: d[0],
+                                                    parent: "Triggered"
+                                                });
+                                                methods.push(d[0]);
+                                            }
+                                        });
+
+                                        var root = d3.stratify()
+                                            .id(function (d) {
+                                                return d.name;
+                                            })
+                                            .parentId(function (d) {
+                                                return d.parent;
+                                            })
+                                            (table);
+
+                                        myTree.data(root);
+
+                                        d3.select('#chart')
+                                            .call(myTree);
+                                    });
+
+                                </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="header">
+                                <h3>Explanation</h3>
+                            </div>
+                            <div class="content">
+                                <div class="text-justify">
+                                    <p> The top commands used in the visual studio IDE are presented using
+                                        a collapsible tree chart and wordcloud. The data was obtained from the
+                                        <a href="http://www.kave.cc/msr-mining-challenge"> MSR interaction dataset </a>
+                                        from a number of developers using the IDE. The visualizations
+                                        have been obtained after preprocessing the event stream dataset specifically the
+                                        'command events'.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="header">
+                                <h4>Generated Wordcloud from top Commands</h4>
+                            </div>
+                            <div class="content">
+                                <img id="myImg" src="{{ url_for('get_wordcloud_fig') }}"
+                                     alt="Wordcloud representation of Top Commands" height="400">
+
+                                <div id="myModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                    <div id="caption"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="content text-justify">
+                                <p>
+                                    Take part in our <a href="quiz"> quiz</a> to see how much you know IDE commands
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    Software Engineering , Project by- <a href="https://github.com/sakib2263">Sakib</a>,
+                    <a href="https://github.com/thTonmoy">Tonmoy</a>
+                    ,Zaki
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
+<script>
+    var modal = document.getElementById('myModal');
+    var img = document.getElementById('myImg');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>
+
+</body>
+<!--   Core JS Files   -->
+<script src="{{ url_for('static', filename='js/jquery.3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='js/chartist.min.js') }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ url_for('static', filename='js/bootstrap-notify.js') }}"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ url_for('static', filename='js/light-bootstrap-dashboard.js') }}"></script>
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+</html>

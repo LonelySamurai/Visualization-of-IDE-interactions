@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel=icon type=image/png href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Visualization Of IDE Interactions & Developer Surveys</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+
+    <!-- Animation library for notifications   -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/animate.min.css') }}">
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/light-bootstrap-dashboard.css') }}">
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/demo.css') }}">
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/pe-icon-7-stroke.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/icono.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+          integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="static/img/sidebar-4.jpg">
+    <!--
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+    -->
+  <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    Visualization of IDE Interactions
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="/">
+                        <i class="icono-barChart"></i>
+                        <p>Home Page</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="tree">
+                        <i class="pe-7s-graph1"></i>
+                        <p>Usage of IDE Commands</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="rb">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Correlation between Refactoring and Test & Build Failures</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="spidy">
+                        <i class="icono-pieChart"></i>
+                        <p>Spider Web</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="map">
+                        <i class="pe-7s-world"></i>
+                        <p>World Map</p>
+                    </a>
+                </li>
+                <li>
+                   <a href="network">
+                        <i class="pe-7s-network"></i>
+                        <p>Network Analysis</p>
+                    </a>
+                </li>
+                 <li>
+                    <a href="cluster">
+                        <i class="fas fa-globe"></i>
+                        <p>3D Clustering</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="quiz">
+                        <i class="pe-7s-science"></i>
+                        <p>Quiz</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cluster">
+                        <i class="pe-7s-note2"></i>
+                        <p>Data set and Processing</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Home</a>
+                </div>
+                <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="">
+                                <p>About</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <p>
+                                    Dropdown
+                                    <b class="caret"></b>
+                                </p>
+
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Welcome</h4>
+                            </div>
+                            <div class="content">
+                                <p class="simple-text"> This project aims to visualize how developers interact with IDE
+                                    using
+                                    msr 2018 interaction dataset and other developer data from hacker rank survey.
+                                </p>
+                                <p class="text-justify">
+                                    Integrated Development Environments are used extensively in software development.
+                                    Therefore,
+                                    it provides immense insight into how developers work if we can visualize how they
+                                    interact with
+                                    various IDE features. Visualizing these interactions will give us a clear picture of
+                                    how development
+                                    activities typically go on. This information is helpful to evaluate whether the
+                                    existing IDE environments
+                                    give developers ample support and improve existing tools.
+                                </p>
+                                <p class="text-justify">
+                                    Use the navigation menu on the side to explore different interactive visualization
+                                    and provide us with your valuable feedback
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Developer Activity throughout the day</h4>
+                                <p class="category">Useful for understanding Developers Working Habits and
+                                    Efficiency</p>
+                            </div>
+                            <div class="content">
+                                <script src="https://cdn.plot.ly/plotly-basic-latest.min.js"></script>
+                                {{ chart }}
+                                <div id="Bar" class="chart"></div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i>Use Slider to interact and see different activities
+                                        at different time
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="content">
+                                <div class="header">
+                                    <h4 class="title">IDE Event occurance</h4>
+                                    <p class="category">Which feature was used most</p>
+                                </div>
+                                <img class="img-responsive" src="{{ url_for('static', filename='summary.svg') }}"/>
+
+                                <div class="footer">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-info"></i> Duration
+                                        <i class="fa fa-circle text-danger"></i> Frequency
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-clock-o"></i> Fixed dataset MSR2018
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Language Popularity among Developers & Learners</h4>
+                            <p class="category">From survey of the the developer who learned and didnot learn a
+                                language.</p>
+                        </div>
+                        <div class="content">
+                            <img class="img-responsive" src="{{ url_for('static', filename='Langpop.png') }}"/>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Open
+                                    <i class="fa fa-circle text-danger"></i> Click
+                                    <i class="fa fa-circle text-warning"></i> Click Second Time
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    Software Engineering , Project by- <a href="https://github.com/sakib2263">Sakib</a>,
+                    <a href="https://github.com/thTonmoy">Tonmoy</a>
+                    ,Zaki
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+
+<!--   Core JS Files   -->
+<script src="{{ url_for('static', filename='js/jquery.3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='js/chartist.min.js') }}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{{ url_for('static', filename='js/bootstrap-notify.js') }}"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{{ url_for('static', filename='js/light-bootstrap-dashboard.js') }}"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'pe-7s-gift',
+            message: "Hi, Developers! Welcome to our<b>Software Enginnering Project</b> - a beautiful  website for <b>Visualization</b> of different Datasets."
+
+        }, {
+            type: 'info',
+            timer: 4000
+        });
+
+    });
+</script>
+
+</html>
